@@ -1,9 +1,7 @@
 <?php
 
-session_start();
-
 // Redirecció per sessió activa
-if (isset($_SESSION["user"]) && time() - $_SESSION["user"]["login_time_stamp"] < 60) {
+if (isset($_SESSION["user"]) && time() - $_SESSION["user"]["login_time_stamp"] < 3600) {
     header("Location: hola.php", true, 302);
 }
 
@@ -34,7 +32,7 @@ if (isset($_SESSION["user"]) && time() - $_SESSION["user"]["login_time_stamp"] <
             </form>
         </div>
         <div class="form-container sign-in-container">
-            <form action="process.php" method="post">
+            <form action="./processDB.php" method="post">
                 <h1>Inicia la sessió</h1>
                 <span>introdueix les teves credencials</span>
                 <input type="hidden" name="method" value="signin" />
